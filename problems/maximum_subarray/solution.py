@@ -1,15 +1,11 @@
-class Solution(object):
-    def maxSubArray(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """ 
-        counts = 0
-        max_ = -10001
-        for i, num in enumerate(nums):
-            if i == 0:
-                counts = num
-            else:
-                counts = max(num, counts + num)
-            max_ = max(counts, max_)
-        return max_
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        ans = [nums[0]]
+        for i in range(1,len(nums)):
+                t = ans[-1] + nums[i]
+                if t > nums[i] :
+                    ans.append(t)
+                else:
+                    ans.append(nums[i])
+                    pass
+        return max(ans)          
